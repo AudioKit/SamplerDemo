@@ -61,10 +61,11 @@ class Conductor {
         // http://audiokit.io/downloads/ROMPlayerInstruments.zip
         // see loadSamples(byIndex:) below
 
-        sampler.attackDuration = 0.01
-        sampler.decayDuration = 0.1
-        sampler.sustainLevel = 0.8
-        sampler.releaseDuration = 1.0
+        sampler.attackDuration = 0.75
+        sampler.decayDuration = 0
+        sampler.sustainLevel = 1
+        sampler.releaseDuration = 0.75
+        //sampler.drumMode = true
 
 //        sampler.filterEnable = true
 //        sampler.filterCutoff = 20.0
