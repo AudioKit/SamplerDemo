@@ -19,8 +19,6 @@ class Conductor {
 
     let midi = AKMIDI()
     var sampler: AKSampler
-    var appleSampler = AKAppleSampler()
-    var mixer: AKMixer
 
     var pitchBendUpSemitones = 2
     var pitchBendDownSemitones = 2
@@ -41,13 +39,12 @@ class Conductor {
 
         // Signal Chain
         sampler = AKSampler()
-        mixer = AKMixer(sampler, appleSampler)
 
         // Set up the AKSampler
         setupSampler()
 
         // Set Output & Start AudioKit
-        AudioKit.output = mixer
+        AudioKit.output = sampler
         do {
             try AudioKit.start()
         } catch {
@@ -67,7 +64,7 @@ class Conductor {
         sampler.attackDuration = 0.01
         sampler.decayDuration = 0.1
         sampler.sustainLevel = 0.8
-        sampler.releaseDuration = 0.5
+        sampler.releaseDuration = 1.0
 
 //        sampler.filterEnable = true
 //        sampler.filterCutoff = 20.0
@@ -112,19 +109,11 @@ class Conductor {
     func playNote(note: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         AKLog("playNote \(note) \(velocity)")
         sampler.play(noteNumber: offsetNote(note, semitones: synthSemitoneOffset), velocity: velocity)
-        do {
-            try appleSampler.play(noteNumber: offsetNote(note, semitones: synthSemitoneOffset), velocity: velocity, channel: channel)
-        } catch {
-        }
     }
 
     func stopNote(note: MIDINoteNumber, channel: MIDIChannel) {
         AKLog("stopNote \(note)")
         sampler.stop(noteNumber: offsetNote(note, semitones: synthSemitoneOffset))
-        do {
-            try appleSampler.stop(noteNumber: note, channel: channel)
-        } catch {
-        }
     }
 
     func allNotesOff() {
