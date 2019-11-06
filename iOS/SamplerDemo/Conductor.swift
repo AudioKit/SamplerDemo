@@ -29,7 +29,7 @@ class Conductor {
 
         // MIDI Configure
         midi.createVirtualPorts()
-        midi.openInput("Session 1")
+        midi.openInput(name: "Session 1")
         midi.openOutput()
 
         // Session settings
@@ -61,10 +61,10 @@ class Conductor {
         // http://audiokit.io/downloads/ROMPlayerInstruments.zip
         // see loadSamples(byIndex:) below
 
-        sampler.attackDuration = 0.01
-        sampler.decayDuration = 0.1
-        sampler.sustainLevel = 0.8
-        sampler.releaseDuration = 0.5
+        sampler.attackDuration = 0
+        sampler.decayDuration = 0
+        sampler.sustainLevel = 1
+        sampler.releaseDuration = 2
 
 //        sampler.filterEnable = true
 //        sampler.filterCutoff = 20.0
@@ -84,12 +84,12 @@ class Conductor {
 
     func openMIDIInput(byName: String) {
         midi.closeAllInputs()
-        midi.openInput(byName)
+        midi.openInput(name: byName)
     }
 
     func openMIDIInput(byIndex: Int) {
         midi.closeAllInputs()
-        midi.openInput(midi.inputNames[byIndex])
+        midi.openInput(name: midi.inputNames[byIndex])
     }
 
     func loadSamples(byIndex: Int) {

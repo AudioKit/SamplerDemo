@@ -29,7 +29,7 @@ class Conductor {
 
         // MIDI Configure
         midi.createVirtualPorts()
-        midi.openInput("Session 1")
+        midi.openInput(name: "Session 1")
         midi.openOutput()
 
         // Session settings
@@ -50,6 +50,16 @@ class Conductor {
         } catch {
             AKLog("AudioKit did not start")
         }
+        do {
+            try AudioKit.stop()
+        } catch {
+            AKLog("AudioKit did not stop")
+        }
+        do {
+            try AudioKit.start()
+        } catch {
+            AKLog("AudioKit did not start")
+        }
     }
 
     private func setupSampler() {
@@ -62,7 +72,9 @@ class Conductor {
         // Illustration of how to load single-cycle waveforms
         // See https://www.adventurekid.se/akrt/waveforms/ to obtain the "AdventureKid" WAV files.
 //        do {
-//            let path = "/Users/shane/Desktop/AKSampler Sounds/AKWF Samples/AKWF_bw_sawbright/AKWF_bsaw_0005.wav"
+//            //let path = "/Users/shane/Desktop/AKWF Samples/AKWF_bw_sawbright/AKWF_bsaw_0005.wav"
+//            let path = "/Users/shane/Desktop/AKWF Samples/AKWF_clarinett/AKWF_clarinett_0005.wav"
+//            //let path = "/Users/shane/Desktop/AKWF Samples/AKWF_eorgan/AKWF_eorgan_0005.wav"
 //            let furl = URL(fileURLWithPath: path)
 //            let file = try AKAudioFile(forReading: furl)
 //            let desc = AKSampleDescriptor(noteNumber: 26, noteFrequency: 44100.0/600, minimumNoteNumber: 0, maximumNoteNumber: 127, minimumVelocity: 0, maximumVelocity: 127, isLooping: true, loopStartPoint: 0, loopEndPoint: 599, startPoint: 0, endPoint: 599)
@@ -114,12 +126,12 @@ class Conductor {
 
     func openMIDIInput(byName: String) {
         midi.closeAllInputs()
-        midi.openInput(byName)
+        midi.openInput(name: byName)
     }
 
     func openMIDIInput(byIndex: Int) {
         midi.closeAllInputs()
-        midi.openInput(midi.inputNames[byIndex])
+        midi.openInput(name: midi.inputNames[byIndex])
     }
 
     func loadSFZ(folderPath: String, sfzFileName: String) {

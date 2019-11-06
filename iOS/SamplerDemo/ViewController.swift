@@ -16,6 +16,13 @@ class ViewController: UIViewController {
     var isPlaying = false
     var currentSound = 0
 
+    // avoid strange behavior when user touches the on-screen keyboard too close to the edge
+    override var prefersStatusBarHidden: Bool {
+        return true }
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
+        return .all
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +30,6 @@ class ViewController: UIViewController {
         setupUI()
         conductor.loadSamples(byIndex: currentSound)
     }
-
 
     func setupUI() {
         let stackView = UIStackView()
@@ -109,7 +115,7 @@ extension ViewController: AKMIDIListener {
         AKLog("midi setup change, midi.inputNames: \(conductor.midi.inputNames)")
         let inputNames = conductor.midi.inputNames
         inputNames.forEach { inputName in
-            conductor.midi.openInput(inputName)
+            conductor.midi.openInput(name: inputName)
         }
     }
 
