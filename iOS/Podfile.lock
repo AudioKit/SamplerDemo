@@ -1,21 +1,21 @@
 PODS:
-  - AudioKit (4.5.4):
-    - AudioKit/Core (= 4.5.4)
-    - AudioKit/UI (= 4.5.4)
-  - AudioKit/Core (4.5.4)
-  - AudioKit/UI (4.5.4):
+  - AudioKit (4.9.2):
+    - AudioKit/Core (= 4.9.2)
+    - AudioKit/UI (= 4.9.2)
+  - AudioKit/Core (4.9.2)
+  - AudioKit/UI (4.9.2):
     - AudioKit/Core
 
 DEPENDENCIES:
-  - AudioKit
+  - AudioKit (>= 4.5.5.b1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AudioKit
 
 SPEC CHECKSUMS:
-  AudioKit: af3f5b73e22f85f3cd03076fea8afbb9658f0938
+  AudioKit: ee388f0c9ad4e90b6106c14caaf809cd7ca220da
 
-PODFILE CHECKSUM: 3e56e1a0accec604947c98780c5501da50480228
+PODFILE CHECKSUM: 6f99c2c806096c4311419a9ba47e58347062bfd3
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.8.1
