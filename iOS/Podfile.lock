@@ -1,9 +1,9 @@
 PODS:
-  - AudioKit (4.9.2):
-    - AudioKit/Core (= 4.9.2)
-    - AudioKit/UI (= 4.9.2)
-  - AudioKit/Core (4.9.2)
-  - AudioKit/UI (4.9.2):
+  - AudioKit (4.9.3):
+    - AudioKit/Core (= 4.9.3)
+    - AudioKit/UI (= 4.9.3)
+  - AudioKit/Core (4.9.3)
+  - AudioKit/UI (4.9.3):
     - AudioKit/Core
 
 DEPENDENCIES:
@@ -14,8 +14,8 @@ SPEC REPOS:
     - AudioKit
 
 SPEC CHECKSUMS:
-  AudioKit: ee388f0c9ad4e90b6106c14caaf809cd7ca220da
+  AudioKit: d025ecbb68f567bba15dab7ea80b8991155729f9
 
 PODFILE CHECKSUM: 6f99c2c806096c4311419a9ba47e58347062bfd3
 
-COCOAPODS: 1.8.1
+COCOAPODS: 1.8.3
